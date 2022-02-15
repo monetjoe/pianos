@@ -1,5 +1,5 @@
 # wifi_tool_script
-wifi cracking sh and bat
+Wifi cracking sh and bat
 
 ## Usage
 
@@ -17,5 +17,5 @@ wifi cracking sh and bat
 ## Environment
 
 | Linux | CUDA | hashcat |
-| --- | --- | --- |
+| :---: | :---: | :---: |
 | Kali-Linux-2021.4a-vmware-amd64 | 11.4+ | 6.0.0+ |
