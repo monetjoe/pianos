@@ -1,9 +1,9 @@
 # wifi_tool_script
 wifi cracking sh and bat
 
-## Shell usage
+## Usage
 
-0. Mount FAST150US on VMWare for Kali;
+0. Mount FW150US on VMWare for Kali;
 1. Drag *.sh into Kali;
 2. `sh search.sh`;
 3. `sh monitor.sh %tag_mac_addr% %channel% %ssid%`;
