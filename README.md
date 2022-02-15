@@ -3,11 +3,11 @@ wifi cracking sh and bat
 
 ## Usage
 
-0. Mount FW150US on VMWare for Kali;
-1. Drag *.sh into Kali;
-2. `sh search.sh`;
-3. `sh monitor.sh %tag_mac_addr% %channel% %ssid%`;
-4. `sh attack.sh %tag_mac_addr% %client_mac_addr%`;
+0. Mount FW150US to Kali in VMware;
+1. Drag *.sh into Kali and open a terminal at *.sh path;
+2. Run `sh search.sh`;
+3. Run `sh monitor.sh %tag_mac_addr% %channel% %ssid%`;
+4. Run `sh attack.sh %tag_mac_addr% %client_mac_addr%`;
 5. Once the `monitor.sh` finish handshake, stop all scripts;
 6. Copy out the generated .cap file to Windows;
 7. Convert the .cap package to .hc22000 on <https://hashcat.net/cap2hashcat/>;
