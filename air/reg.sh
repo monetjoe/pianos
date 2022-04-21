@@ -1,3 +1,3 @@
 #! /bin/bash
 
-echo 'kali' | sudo cp hcxpcapngtool /usr/local/bin
+echo 'kali' | sudo -S cp $(pwd)/hcxpcapngtool /usr/local/bin
