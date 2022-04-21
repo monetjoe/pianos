@@ -1,3 +1,5 @@
-#！/bin/bash
+#! /bin/bash
 
-echo 'kali' | sudo -S airodump-ng wlan0
+rm -rf search
+mkdir search
+echo 'kali' | sudo -S airodump-ng wlan0 -w search/search

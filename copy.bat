@@ -1,2 +1,3 @@
-xcopy crack.bat "H:\crack" /y
+echo d | xcopy crack.bat "./win/" /y
+echo d | xcopy dictcrack.bat "./win/" /y
 pause
