@@ -1,10 +1,10 @@
 @echo off
 setlocal enabledelayedexpansion
 
-set essid=essid
-set dictpath=C:\dicts
-set hashpath=C:\Hashcat
-set capfile=C:\%essid%\%essid%.hc22000
+set essid=wzlt
+set dictpath=H:\crack\dicts
+set hashpath=D:\Program Files\Hashcat
+set capfile=H:\crack\%essid%\%essid%.hc22000
 
 call :topath
 for %%i in ( %dictpath%\*.txt ) do (

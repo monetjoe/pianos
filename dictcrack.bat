@@ -1,10 +1,10 @@
 @echo off
 setlocal enabledelayedexpansion
 
-set essid=essid
-set dictfile=C:\dicts\rockyou.txt
-set hashpath=C:\Hashcat
-set capfile=C:\%essid%\%essid%.hc22000
+set essid=wzlt
+set dictfile=H:\crack\dicts\rockyou.txt
+set hashpath=D:\Program Files\Hashcat
+set capfile=H:\crack\%essid%\%essid%.hc22000
 
 call :topath
 call :crack %dictfile%
