@@ -2,12 +2,14 @@
 setlocal enabledelayedexpansion
 
 set essid=essid
-set dictfile=C:\dicts\rockyou.txt
+set dictpath=C:\dicts
 set hashpath=C:\Hashcat
 set capfile=C:\%essid%\%essid%.hc22000
 
 call :topath
-call :crack %dictfile%
+for %%i in ( %dictpath%\*.txt ) do (
+    call :crack %%i
+)
 pause
 goto:eof
 
