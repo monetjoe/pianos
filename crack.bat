@@ -8,8 +8,9 @@ set masks[2]=0429?d?d?d?d?d?d?d
 set masks[3]=?d?d?d?d?d?d?d?d
 set masks[4]=1?d?d?d?d?d?d?d?d?d?d
 
+set crackpath=H:\crack\cracking
 set hashpath=D:\Program Files\Hashcat
-set capfile=H:\crack\%essid%\%essid%.hc22000
+set capfile=%crackpath%\%essid%\%essid%.hc22000
 
 set len=0
 :SymLoop

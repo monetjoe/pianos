@@ -3,8 +3,9 @@ setlocal enabledelayedexpansion
 
 set essid=wzlt
 set dictpath=H:\crack\dicts
+set crackpath=H:\crack\cracking
 set hashpath=D:\Program Files\Hashcat
-set capfile=H:\crack\%essid%\%essid%.hc22000
+set capfile=%crackpath%\%essid%\%essid%.hc22000
 
 call :topath
 for %%i in ( %dictpath%\*.txt ) do (

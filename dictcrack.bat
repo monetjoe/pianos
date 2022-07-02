@@ -2,9 +2,10 @@
 setlocal enabledelayedexpansion
 
 set essid=wzlt
+set crackpath=H:\crack\cracking
 set dictfile=H:\crack\dicts\rockyou.txt
 set hashpath=D:\Program Files\Hashcat
-set capfile=H:\crack\%essid%\%essid%.hc22000
+set capfile=%crackpath%\%essid%\%essid%.hc22000
 
 call :topath
 call :crack %dictfile%
