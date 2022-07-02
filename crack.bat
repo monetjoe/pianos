@@ -7,10 +7,10 @@ set masks[2]=0429?d?d?d?d?d?d?d
 set masks[3]=?d?d?d?d?d?d?d?d
 set masks[4]=1?d?d?d?d?d?d?d?d?d?d
 
-set /p essid=<./config/essid.txt
-set /p dictpath=<./config/dictpath.txt
-set /p crackpath=<./config/crackpath.txt
-set /p hashpath=<./config/hashpath.txt
+set /p essid=<.\config\essid.txt
+set /p dictpath=<.\config\dictpath.txt
+set /p crackpath=<.\config\crackpath.txt
+set /p hashpath=<.\config\hashpath.txt
 set capfile=%crackpath%\%essid%\%essid%.hc22000
 
 set len=0

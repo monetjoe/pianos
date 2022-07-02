@@ -2,7 +2,6 @@
 Wifi cracking sh and bat scripts
 
 ## Usage
-
 0. Mount FW150US to Kali in VMware
 1. Drag `*.sh` into Kali and open a terminal at its path
 2. Run `sh search.sh`
@@ -13,6 +12,30 @@ Wifi cracking sh and bat scripts
 7. Convert the `.cap` package to `.hc22000` on <a href='https://hashcat.net/cap2hashcat' target='_blank'>cap2hashcat</a>
 8. Move the `.hc22000` package to assigned location in `crack.bat`
 9. Modify paths in `./config` and run it
+
+## Dir structure
+- wifi-tool
+  - air
+    - *.sh
+  - config
+    - crackpath.txt
+    - dictpath.txt
+    - essid.txt
+    - hashpath.txt
+  - cracked
+    - %essid%
+      - %essid%.hc22000
+    - ...
+  - cracking
+    - %essid%
+      - %essid%.hc22000
+    - ...
+  - dicts
+    - rockyou.txt
+    - ...
+  - crack.bat
+  - dictcrack.bat
+  - dictcrackall.bat
 
 ## Environment
 
