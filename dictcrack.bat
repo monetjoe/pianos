@@ -1,10 +1,10 @@
 @echo off
 setlocal enabledelayedexpansion
 
-set essid=wzlt
-set crackpath=H:\crack\cracking
-set dictfile=H:\crack\dicts\rockyou.txt
-set hashpath=D:\Program Files\Hashcat
+set /p essid=<./config/essid.txt
+set /p dictpath=<./config/dictpath.txt
+set /p crackpath=<./config/crackpath.txt
+set /p hashpath=<./config/hashpath.txt
 set capfile=%crackpath%\%essid%\%essid%.hc22000
 
 call :topath

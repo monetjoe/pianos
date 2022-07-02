@@ -1,15 +1,16 @@
 @echo off
 setlocal enabledelayedexpansion
 
-set essid=wzlt
 set masks[0]=1?d?d0429?d?d?d?d
 set masks[1]=1?d?d4290?d?d?d?d
 set masks[2]=0429?d?d?d?d?d?d?d
 set masks[3]=?d?d?d?d?d?d?d?d
 set masks[4]=1?d?d?d?d?d?d?d?d?d?d
 
-set crackpath=H:\crack\cracking
-set hashpath=D:\Program Files\Hashcat
+set /p essid=<./config/essid.txt
+set /p dictpath=<./config/dictpath.txt
+set /p crackpath=<./config/crackpath.txt
+set /p hashpath=<./config/hashpath.txt
 set capfile=%crackpath%\%essid%\%essid%.hc22000
 
 set len=0
