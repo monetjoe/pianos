@@ -17,18 +17,20 @@ Wifi cracking sh and bat scripts
 - wifi-tool
   - air
     - *.sh
+    - hcxpcapngtool
   - config
     - crackpath.txt
     - dictpath.txt
     - essid.txt
     - hashpath.txt
   - cracked
-    - %essid%
-      - %essid%.hc22000
+    - wifi1
+      - wifi1.hc22000
+      - wifi1.txt
     - ...
   - cracking
-    - %essid%
-      - %essid%.hc22000
+    - wifi2
+      - wifi2.hc22000
     - ...
   - dicts
     - rockyou.txt
