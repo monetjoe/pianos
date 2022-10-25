@@ -1,7 +1,4 @@
 win/crack.bat
 win/dictcrack.bat
 win/dictcrackall.bat
-config/*
 cracked/*
-cracking/*
-dicts/*
