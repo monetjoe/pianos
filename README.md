@@ -44,9 +44,3 @@ Wifi cracking sh and bat scripts
     - ...
   - crack.bat
   - dictcrack.bat
-  - dictcrackall.bat
-
-<!-- ## Environment
-|              Linux              | Windows | CUDA  | hashcat |
-| :-----------------------------: | :-----: | :---: | :-----: |
-| Kali-Linux-2021.4a-vmware-amd64 |   10    | 11.4+ | 6.0.0+  | -->
