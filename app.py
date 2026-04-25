@@ -133,4 +133,4 @@ if __name__ == "__main__":
             ```"""
         )
 
-    demo.launch(css="#gradio-share-link-button-0 { display: none; }")
+    demo.launch(css="#gradio-share-link-button-0 { display: none; }", ssr_mode=False)
