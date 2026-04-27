@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - main
+
+  schedule:
+    - cron: "0 19 * * *" # 每天 UTC 时间 19:00 (北京时间 3:00~4:15) 触发一次
+
   workflow_dispatch:
     # 允许手动触发
 
@@ -11,9 +15,9 @@ permissions:
   contents: write
 
 jobs:
-  sync-file:
+  job-on-push:
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
-
     steps:
       # Step 1: 检出当前仓库代码
       - name: Checkout repository
@@ -62,4 +66,34 @@ jobs:
             git push
           else
             echo "Files are the same, no changes."
+          fi
+
+  job-on-schedule:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check HuggingFace SDK Update
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          GIT_NAME: ${{ secrets.GIT_NAME }}
+          GIT_EMAIL: ${{ secrets.GIT_EMAIL }}
+          MD_URL: ${{ vars.MD_URL }}
+        run: |
+          GIT_LFS_SKIP_SMUDGE=1 git clone https://oauth2:$HF_TOKEN@huggingface.co/spaces/ccmusic-database/pianos ./hf_repo
+          cd ./hf_repo
+          LATEST_VER=$(curl -s "$MD_URL" | tr -d '\n' | grep -oP '(?<=<code>).*?(?=</code>)')
+          if [ -n "$LATEST_VER" ]; then
+            sed -i "s/^\(sdk_version: \)[0-9.]*/\1$LATEST_VER/" README.md
+            if [ -n "$(git status --porcelain)" ]; then
+              echo "Files are different, committing changes..."
+              git config --global user.name "$GIT_NAME"
+              git config --global user.email "$GIT_EMAIL"
+              git add .
+              git commit -m "Update SDK at $(date '+%Y-%m-%d %H:%M:%S')"
+              git push
+            else
+              echo "Files are the same, no changes."
+            fi
+          else
+            echo "Failed to obtain latest sdk version."
           fi
