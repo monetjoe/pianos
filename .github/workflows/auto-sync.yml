@@ -32,8 +32,8 @@ jobs:
         run: |
           mv -f ./.github/restart.py ../
           git clone https://oauth2:$HF_TOKEN@huggingface.co/spaces/monetjoe/pianos ../hf_repo
-          rm -rf ./LICENSE ./.git*
-          cp -rf ../hf_repo/.git ../hf_repo/README.md ../hf_repo/requirements.txt ./
+          rm -rf ./.git* ./LICENSE
+          cp -rf ../hf_repo/README.md ../hf_repo/requirements.txt ../hf_repo/.git ./
           if [ -n "$(git status --porcelain)" ]; then
             echo "Files are different, committing changes..."
             git config --global user.name "$GIT_NAME"
