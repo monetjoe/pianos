@@ -23,7 +23,29 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Step 2: 同步至 ModelScope
+      # Step 2: 同步至 HuggingFace
+      - name: Sync Files to HuggingFace
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          GIT_NAME: ${{ secrets.GIT_NAME }}
+          GIT_EMAIL: ${{ secrets.GIT_EMAIL }}
+        run: |
+          mv -f ./.github/restart.py ../
+          git clone https://oauth2:$HF_TOKEN@huggingface.co/spaces/monetjoe/pianos ../hf_repo
+          rm -rf ./LICENSE ./.git*
+          cp -rf ../hf_repo/.git ../hf_repo/README.md ../hf_repo/requirements.txt ./
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "Files are different, committing changes..."
+            git config --global user.name "$GIT_NAME"
+            git config --global user.email "$GIT_EMAIL"
+            git add .
+            git commit -m "Auto sync at $(date '+%Y-%m-%d %H:%M:%S')"
+            git push
+          else
+            echo "Files are the same, no changes."
+          fi
+
+      # Step 3: 同步至 ModelScope
       - name: Sync Files to ModelScope
         env:
           MS_TOKEN: ${{ secrets.MS_TOKEN }}
@@ -31,8 +53,7 @@ jobs:
           GIT_EMAIL: ${{ secrets.GIT_EMAIL }}
         run: |
           git clone https://oauth2:$MS_TOKEN@www.modelscope.cn/studios/ccmusic-database/pianos.git ../ms_repo
-          mv -f ./.github/restart.py ../
-          rm -rf ./LICENSE ./README.md ./.github ./.git ./.gitattributes ./.gitignore
+          rm -rf ./.git ./README.md
           cp -rf ../ms_repo/.git ../ms_repo/requirements.txt ./
           if [ -n "$(git status --porcelain)" ]; then
             echo "Files are different, committing changes..."
@@ -43,27 +64,6 @@ jobs:
             git push
             pip install modelscope
             python ../restart.py --token $MS_TOKEN
-          else
-            echo "Files are the same, no changes."
-          fi
-
-      # Step 3: 同步至 HuggingFace
-      - name: Sync Files to HuggingFace
-        env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
-          GIT_NAME: ${{ secrets.GIT_NAME }}
-          GIT_EMAIL: ${{ secrets.GIT_EMAIL }}
-        run: |
-          git clone https://oauth2:$HF_TOKEN@huggingface.co/spaces/monetjoe/pianos ../hf_repo
-          rm -rf ./.git
-          cp -rf ../hf_repo/.git ../hf_repo/README.md ../hf_repo/requirements.txt ./
-          if [ -n "$(git status --porcelain)" ]; then
-            echo "Files are different, committing changes..."
-            git config --global user.name "$GIT_NAME"
-            git config --global user.email "$GIT_EMAIL"
-            git add .
-            git commit -m "Auto sync at $(date '+%Y-%m-%d %H:%M:%S')"
-            git push
           else
             echo "Files are the same, no changes."
           fi
