@@ -54,7 +54,7 @@ jobs:
         run: |
           git clone https://oauth2:$MS_TOKEN@www.modelscope.cn/studios/ccmusic-database/pianos.git ../ms_repo
           rm -rf ./.git ./README.md
-          cp -rf ../ms_repo/.git ../ms_repo/requirements.txt ./
+          cp -rf ../ms_repo/requirements.txt ../ms_repo/.git ./
           if [ -n "$(git status --porcelain)" ]; then
             echo "Files are different, committing changes..."
             git config --global user.name "$GIT_NAME"
