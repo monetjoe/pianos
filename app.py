@@ -118,9 +118,7 @@ if __name__ == "__main__":
             title=_L("建议录音时长保持在 3s 左右, 过长会影响识别效率"),
         )
 
-        gr.Markdown(
-            f"# {_L('引用')}"
-            + """
+        gr.Markdown(f"# {_L('引用')}" + """
             ```bibtex
             @inproceedings{zhou2023holistic,
                 title        = {A Holistic Evaluation of Piano Sound Quality},
@@ -130,7 +128,10 @@ if __name__ == "__main__":
                 year         = {2023},
                 organization = {Springer}
             }
-            ```"""
-        )
+            ```""")
 
-    demo.launch(css="#gradio-share-link-button-0 { display: none; }", ssr_mode=False)
+    demo.launch(
+        theme=gr.themes.Ocean(),
+        css="#gradio-share-link-button-0 { display: none; }",
+        ssr_mode=False,
+    )
