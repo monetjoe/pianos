@@ -31,7 +31,6 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          mv -f ./.github/restart.py ../
           git clone https://oauth2:$HF_TOKEN@huggingface.co/spaces/monetjoe/pianos ../hf_repo
           rm -rf ./.git* ./LICENSE
           cp -rf ../hf_repo/README.md ../hf_repo/requirements.txt ../hf_repo/.git ./
@@ -47,6 +46,8 @@ jobs:
       - name: Sync Files to ModelScope
         env:
           MS_TOKEN: ${{ secrets.MS_TOKEN }}
+          GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
+          BASE_URL: ${{ secrets.BASE_URL }}
         run: |
           git clone https://oauth2:$MS_TOKEN@www.modelscope.cn/studios/ccmusic-database/pianos.git ../ms_repo
           rm -rf ./.git ./README.md
@@ -56,8 +57,9 @@ jobs:
             git add .
             git commit -m "Auto sync at $(date '+%Y-%m-%d %H:%M:%S')"
             git push
-            pip install modelscope==1.37.1
-            python ../restart.py --token $MS_TOKEN
+            wget --header="Authorization: token $GIT_TOKEN" $BASE_URL/restart.py
+            pip install modelscope
+            python ./restart.py --token $MS_TOKEN --repo ccmusic-database/pianos
           else
             echo "Files are the same, no changes."
           fi
