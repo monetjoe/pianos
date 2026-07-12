@@ -6,7 +6,7 @@ on:
       - main
 
   schedule:
-    - cron: "0 19 * * *" # 每天 UTC 时间 19:00 (北京时间 3:00~4:15) 触发一次
+    - cron: "0 13 * * *"
 
   workflow_dispatch: # 允许手动触发
 
