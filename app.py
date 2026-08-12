@@ -11,7 +11,7 @@ import torchvision.transforms as transforms
 from collections import Counter
 from PIL import Image
 from tqdm import tqdm
-from model import net, _L, MODEL_DIR, TMP_DIR
+from model import ZERO, net, _L, MODEL_DIR, TMP_DIR
 
 
 def most_common_element(input_list):
@@ -55,6 +55,7 @@ def embed_img(img_path, input_size=224):
     return transform(img).unsqueeze(0)
 
 
+@ZERO
 def infer(wav_path, folder_path=TMP_DIR):
     status = "Success"
     filename = result = None

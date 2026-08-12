@@ -24,8 +24,10 @@ ZH2EN = {
 }
 
 if EN_US:
+    import spaces
     import huggingface_hub
 
+    ZERO = spaces.GPU
     MODEL_DIR = huggingface_hub.snapshot_download(
         "ccmusic-database/pianos",
         cache_dir="./__pycache__",
@@ -38,6 +40,9 @@ else:
         "ccmusic-database/pianos",
         cache_dir="./__pycache__",
     )
+
+    def ZERO(fn):
+        return fn
 
 
 def _L(zh_txt: str):
